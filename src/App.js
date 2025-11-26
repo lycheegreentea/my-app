@@ -4,6 +4,7 @@ import React from "react";
 import Webcam from "react-webcam";
 import ReactDOM from 'react-dom/client';
 import { useState } from 'react';
+var filter = "color";
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
         <h1>Photobooth</h1>
         <p>take your own photos!</p>
       <div>
-        <button>b&w</button>
-        <button>blue</button>
-        <button>color</button>
+        <button onClick={updateFilter("bw")}>b&w</button>
+        <button onClick={updateFilter("blue")}>blue</button>
+        <button onClick={updateFilter("color")}>color</button>
         <WebcamCapture />
         
       </div>
@@ -21,6 +22,10 @@ function App() {
   );
 }
 //3 times, count down from 3 then take photo
+function updateFilter(fil){
+  filter = fil;
+}
+
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
   const [imgSrc1, setImgSrc1] = React.useState(null);
@@ -29,7 +34,6 @@ const WebcamCapture = () => {
     async function gogogo(){
       await countDown();
       setImgSrc1(webcamRef.current.getScreenshot());
-      console.log("done");
       await countDown();
       setImgSrc2(webcamRef.current.getScreenshot());
       await countDown();
@@ -48,7 +52,7 @@ const WebcamCapture = () => {
 
         if(count===0){
           clearInterval(timer);
-          
+          resolve();
         }
       }, 1000);
       }); 
@@ -71,7 +75,7 @@ const WebcamCapture = () => {
       
         <img id = "photo1" src = {imgSrc1} />
         <img id = "photo2" src = {imgSrc2} />
-        <img id = "photo1" src = {imgSrc3} />
+        <img id = "photo3" src = {imgSrc3} />
     
     </>
   );

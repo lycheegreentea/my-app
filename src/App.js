@@ -66,7 +66,7 @@ const WebcamCapture = () => {
 
   return (
     <>
-
+      <div className="webcamholder"></div>
       <Webcam
         audio={false}
         ref={webcamRef}

@@ -1,12 +1,12 @@
 .App {
   text-align: center;
   background-image: url("/assets/background.png");
+  background-size: cover;
   min-height: 100vh;
 }
 
 
 
-WebCam{
-  margin-top: 50px;
-  margin-right: 40px;
+.webcamholder{
+  position: relative; top: 529px; left: 550px;
 }

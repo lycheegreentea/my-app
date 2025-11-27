@@ -1,28 +1,23 @@
+import logo from './logo.svg';
+import './App.css';
 import React from "react";
 import Webcam from "react-webcam";
 import ReactDOM from 'react-dom/client';
-import photobooth from "./assets/photobooth.png";
-import whiteGrid from "./assets/whiteGrid.png"
- 
+import { useState } from 'react';
 var filter = "color";
+
 function App() {
   return (
-    <div>
-      <link href = "/tailwind.css" rel="stylesheet"></link>
+    <div className="App">
+        <h1>Photobooth</h1>
+        <p>take your own photos!</p>
       <div>
-        <h1 className="text-6xl text-red-500">TEST</h1>
-      </div>
-    
-
-
-    <div className="min-h-screen bg-red-300"
-    style={{backgroundImage: `url(${whiteGrid})`}} 
-    >
-        <button onClick={() => updateFilter("bw")}>b&w</button>
-        <button onClick={() => updateFilter("blue")}>blue</button>
-        <button onClick={() => updateFilter("color")}>color</button>
+        <button onClick={updateFilter("bw")}>b&w</button>
+        <button onClick={updateFilter("blue")}>blue</button>
+        <button onClick={updateFilter("color")}>color</button>
         <WebcamCapture />
-    </div>
+        
+      </div>
     </div>
   );
 }
@@ -30,6 +25,7 @@ function App() {
 function updateFilter(fil){
   filter = fil;
 }
+
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
   const [imgSrc1, setImgSrc1] = React.useState(null);
@@ -44,6 +40,7 @@ const WebcamCapture = () => {
       setImgSrc3(webcamRef.current.getScreenshot());
 
     }
+
     const countDown = () => {
       return new Promise(resolve => {
       let count = 4;
@@ -60,20 +57,34 @@ const WebcamCapture = () => {
       }, 1000);
       }); 
     }
+
+
+ 
+
   return (
     <>
+
       <Webcam
         audio={false}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
       />
+
       <p id="countingdown">3</p>
       <button onClick={gogogo}>Start!</button>
       
         <img id = "photo1" src = {imgSrc1} />
         <img id = "photo2" src = {imgSrc2} />
         <img id = "photo3" src = {imgSrc3} />
+    
     </>
   );
+
 }
+//321 go 
+
+
+
+
+
 export default App;

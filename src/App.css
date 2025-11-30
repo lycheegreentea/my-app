@@ -1,6 +1,6 @@
 .App {
   background-image: url("/src/assets/background.png");
-  background-size: contain;
+  background-repeat: repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,25 +28,24 @@
 }
 
 
-.photostrip{
-  width:15%;
-  margin-top: 2em;
-}
+
 .camframe{
+  right:10%;
   width: 60%;
   position: relative;
   display: flex;
   text-align: left;
+  overflow: visible;
 }
 .midsection{
   display: flex;
   text-align: center;
   justify-content: center;
+  height: 100%;
 }
 .webcam{
   position: absolute;
   z-index: 4;
-    vertical-align: middle;
 
   text-align: center;
   transform: translate(40%, 25%);
@@ -68,21 +67,42 @@
   z-index: 5;      
   font-size: 16px;
 }
-.photo-strip{
-  display: flex;
-  flex-direction: column;
+.color{
+  position: absolute;
+  bottom: 10px;    
+  left: 30%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 5;      
+  font-size: 16px;
 }
-.photo-slot{
-  width: 5%;
+.bw{
+  position: absolute;
+  bottom: 10px;    
+  left: 40%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 5;      
+  font-size: 16px;
+}
+.photo-strip img{
+  width: 100%;
+  height: auto;
 }
 .photo-strip{
-  display: flex;
-  direction: column;
-  gap: 11%;
-  right: -20px;
   width: 15%;
+  overflow: hidden;
 }
 .photobooth{
   display: flex;
   flex-direction: row;
+}
+#countingdown{
+  position: absolute;
+  font-size: 10em;
+  color: white; 
+  z-index: 10;
+  transition: opacity 0.2s;
 }

@@ -1,4 +1,3 @@
-import { BrowserRouter } from 'react-router-dom';
 
 import logo from './logo.svg';
 import './App.css';
@@ -6,21 +5,20 @@ import React, { useImperativeHandle } from "react";
 import Webcam from "react-webcam";
 import ReactDOM from 'react-dom/client';
 import { useState } from 'react';
-import frame from './assets/frame.png'
-import photobooth from './assets/photobooth.png'
-import miffy from './assets/miffy.png'
+
 
 var filter = "color";
 
 
 function App() {
+  const frame = process.env.PUBLIC_URL + '/assets/frame.png';
+  const photobooth = process.env.PUBLIC_URL + '/assets/photobooth.png';
   const [imgSrc1, setImgSrc1] = React.useState(null);
   const [imgSrc2, setImgSrc2] = React.useState(null);
   const [imgSrc3, setImgSrc3] = React.useState(null);
   //creates ref
   const captureRef = React.useRef(null); 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
 
     <div class="App">
         <div class="toprow">
@@ -44,7 +42,6 @@ function App() {
         </div>
         
     </div>
-    </BrowserRouter>
 
   );
 }
